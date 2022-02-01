@@ -21,9 +21,16 @@ let rec fib n =
     | 0 -> 0
     | 1 -> 1
     | x -> fib(x-1) + fib(x-2)
+ 
+// 1.6
+let rec sum (m,n) =
+    match (m,n) with
+    | (m, 0) when m >= 0 -> m
+    | (m, n) when m >= 0 && n >= 0 -> m + n + sum(m, n-1)
+    | _ -> failwith "arguments should be positive integers"
     
 [<EntryPoint>]
 let main argv =
-    let result = fib 7
+    let result = sum (2, 1)
     printfn "%A" result 
     0
