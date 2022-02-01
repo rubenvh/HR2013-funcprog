@@ -1,3 +1,12 @@
+
+let rec fact = function
+    | 0 -> 1
+    | n -> n * fact(n-1)
+    
+let rec power = function
+    | (x,0) -> 1.0                
+    | (x,n) -> x * power(x,n-1)
+    
 // 1.1
 let g n = n + 4
 
@@ -29,6 +38,12 @@ let rec sum (m,n) =
     | (m, n) when m >= 0 && n >= 0 -> m + n + sum(m, n-1)
     | _ -> failwith "arguments should be positive integers"
     
+// 1.7
+// (System.Math.PI, fact -1)        -> stack overflow!!
+// fact(fact 4)                     -> int
+// power(System.Math.PI, fact 2)    -> float
+// (power, fact)                    -> (float * int -> float) * (int -> int)
+
 [<EntryPoint>]
 let main argv =
     let result = sum (2, 1)
