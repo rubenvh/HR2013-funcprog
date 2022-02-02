@@ -4,8 +4,8 @@ let rec fact = function
     | n -> n * fact(n-1)
     
 let rec power = function
-    | (x,0) -> 1.0                
-    | (x,n) -> x * power(x,n-1)
+    | _,0 -> 1.0                
+    | x,n -> x * power(x,n-1)
     
 // 1.1
 let g n = n + 4
@@ -34,8 +34,8 @@ let rec fib n =
 // 1.6
 let rec sum (m,n) =
     match (m,n) with
-    | (m, 0) when m >= 0 -> m
-    | (m, n) when m >= 0 && n >= 0 -> m + n + sum(m, n-1)
+    | m, 0 when m >= 0 -> m
+    | m, n when m >= 0 && n >= 0 -> m + n + sum(m, n-1)
     | _ -> failwith "arguments should be positive integers"
     
 // 1.7
@@ -45,7 +45,7 @@ let rec sum (m,n) =
 // (power, fact)                    -> (float * int -> float) * (int -> int)
 
 [<EntryPoint>]
-let main argv =
+let main _ =
     let result = sum (2, 1)
-    printfn "%A" result 
+    printfn $"%A{result}" 
     0
